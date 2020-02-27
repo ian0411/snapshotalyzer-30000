@@ -1,4 +1,5 @@
 import boto3
+import botocore
 import click
 # import sys
 
@@ -132,7 +133,11 @@ def stop_instances(project):
 
 	for i in instances:
 		print(f"Stopping {i.id}...")
-		i.stop()
+		try:
+			i.stop()
+		except botocore.exceptions.ClientError as e:
+			print(" Could not stop {i.id}. " + str(e))
+			continue
 
 	return
 
@@ -146,7 +151,11 @@ def start_instances(project):
 
 	for i in instances:
 		print(f"Starting {i.id}...")
-		i.start()
+		try:
+			i.start()
+		except botocore.exceptions.ClientError as e:
+			print(" Could not start {i.id}. " + str(e))
+			continue
 
 	return
 
