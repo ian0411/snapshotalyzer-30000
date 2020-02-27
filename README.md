@@ -1,4 +1,5 @@
 # snapshotalyzer-30000
+
 Demo project to manage AWS EC2 instance snapshots
 
 ## About
@@ -13,7 +14,8 @@ Shotty uses the configuration file created by the AWS CLI. e.g.
 
 ## Running
 
-`conda run python shotty/shotty.py <command> <--project=PROJECT>`
+`conda run python shotty/shotty.py <command> <subcommand> <--project=PROJECT>`
 
-*command* is list, start, or stop
+*command* is instances, volumes, or snapshots
+*subcommand* - depends on command
 *project* is optional
